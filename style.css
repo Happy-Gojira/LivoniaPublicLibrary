@@ -1,0 +1,339 @@
+/*
+Theme Name: Vantage Child
+Author: Jack Scott
+Author URI: https://jack-mulvey-scott.com
+Template: vantage
+Theme URI: https://siteorigin.com/theme/vantage/
+Description: Vantage is a flexible multipurpose theme. Its strength lies in its tight integration with some powerful plugins like Page Builder for responsive page layouts, Meta Slider for big beautiful sliders and WooCommerce to help you sell online. Vantage is fully responsive and retina ready. Use it to start a business site, portfolio or online store. We offer free and premium support on our support <a href="http://siteorigin.com/thread/">forums</a> (http://siteorigin.com/thread/).
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: vantage
+Tags: one-column, two-columns, left-sidebar, right-sidebar, grid-layout, custom-colors, custom-menu, custom-logo, featured-images, footer-widgets, full-width-template, post-formats, sticky-post, theme-options, threaded-comments, translation-ready, e-commerce
+*/
+/* =Reset
+-------------------------------------------------------------- */
+
+
+
+/* =Menu
+----------------------------------------------- */
+.main-navigation {
+  margin: 0 -35px;
+  background: #c9c9c9;
+  position: relative;
+  font-size: 0;
+  z-index: 9999;
+  /* Font awesome icons */
+  /* General menu link styling */
+  /* For when the menu becomes a sticky menu */
+}
+.main-navigation [class^="fa fa-"] {
+  display: inline-block;
+  margin-right: 15px;
+  font-size: 16px;
+  line-height: 0.5em;
+  color: #333333;
+}
+body.responsive.layout-full #page-wrapper .full-container {
+  max-width: 90%;
+}
+.main-navigation a:hover [class^="fa fa-"] {
+  color: #ffffff;
+}
+.main-navigation ul {
+  text-align: left;
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  zoom: 1;
+  /* Second level menu items */
+}
+.main-navigation ul:before {
+  content: '';
+  display: block;
+}
+.main-navigation ul:after {
+  content: '';
+  display: table;
+  clear: both;
+
+}
+.main-navigation ul li {
+  display: inline-block;
+  font-size: 13px;
+  position: relative;
+}
+.main-navigation ul li:hover > a {
+  background: #00bcff;
+  color: #ffffff;
+}
+.main-navigation ul li a {
+  padding: 20px 35px;
+  line-height: 1em;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.main-navigation ul li a,
+.main-navigation ul li a > * {
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.main-navigation ul ul {
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  background: #464646;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 99999;
+  /* Third Level Items */
+}
+.main-navigation ul ul a {
+  width: 200px;
+  padding: 15px 20px;
+  color: #ffffff;
+}
+.main-navigation ul ul li {
+  position: relative;
+  text-align: left;
+  /* Hovering over 2nd level items */
+}
+.main-navigation ul ul li:hover > a {
+  background: #00bcff;
+  color: #ffffff;
+}
+.main-navigation ul ul ul {
+  left: 100%;
+  top: 0;
+  margin-left: 0;
+}
+.main-navigation ul li:hover > ul {
+  display: block;
+}
+.main-navigation a {
+  display: block;
+  text-decoration: none;
+  color: #333333;
+  font-weight: bold;
+  font-size: 130%;
+}
+.main-navigation.sticky {
+  top: 0;
+}
+.main-navigation.sticky:after {
+  bottom: -6px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 6px 6px -6px inset;
+  content: "";
+  height: 6px;
+  position: absolute;
+  width: 100%;
+}
+body.has-menu-search .main-navigation ul {
+  margin-right: 59px;
+}
+/* Handle the navigation slightly differently on mobile devices */
+body.so-vantage-mobile-device .main-navigation ul ul {
+  display: none;
+}
+body.so-vantage-mobile-device .main-navigation li:hover > ul {
+  display: block;
+}
+.mobile-nav-frame [class^="fa fa-"] {
+  display: inline-block;
+  margin-right: 10px;
+  min-width: 1em;
+}
+.mobile-nav-frame img {
+  max-height: 18px;
+  max-width: 18px;
+  margin-right: 10px;
+}
+.mobile-nav-icon {
+  font-family: 'FontAwesome';
+  display: inline-block;
+  margin-right: 10px;
+}
+.mobile-nav-icon:before {
+  font-size: 14px;
+  content: "\f00b";
+}
+.mobilenav-main-link img {
+  max-height: 15px;
+  max-width: 20px;
+  margin-right: 10px;
+}
+#search-icon {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: 110;
+}
+#search-icon #search-icon-icon {
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  cursor: pointer;
+  background-color: #303134;
+  width: 59px;
+  height: 100%;
+}
+#search-icon #search-icon-icon,
+#search-icon #search-icon-icon .icon-search {
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+#search-icon #search-icon-icon .vantage-icon-search {
+  position: absolute;
+  display: block;
+  width: 17px;
+  height: 17px;
+  font-size: 17px;
+  top: 50%;
+  left: 50%;
+  margin-top: -8px;
+  margin-left: -8.5px;
+  color: #d1d1d1;
+}
+#search-icon #search-icon-icon img {
+  position: absolute;
+  display: block;
+  max-width: 17px;
+  max-height: 17px;
+  top: 50%;
+  left: 50%;
+  margin-top: -8px;
+  margin-left: -8.5px;
+}
+#search-icon #search-icon-icon:hover {
+  background-color: #00bcff;
+}
+#search-icon #search-icon-icon:hover .vantage-icon-search {
+  color: #ffffff;
+}
+#search-icon .searchform {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 1080px;
+  background: #2d2e31;
+  z-index: 10;
+  overflow-x: hidden;
+}
+#search-icon .searchform input[name=s] {
+  color: #d1d1d1;
+  font-size: 17px;
+  font-weight: 200;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 42px;
+  border: none;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  background-color: transparent;
+  outline: none;
+  padding: 0 15px;
+}
+
+
+#header-sidebar .widget_nav_menu ul.menu > li ul.sub-menu li a,
+#masthead-widgets .widget_nav_menu ul.menu > li ul.sub-menu li a {
+  display: block;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.entry-content a {
+  color: #FF2B0A;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.widget_circleicon-widget .circle-icon-box p.text {
+  margin: 0;
+  color: #5e5e5e;
+  font-size: 150%;
+  margin-bottom: 10px;
+}
+
+#divInput form {
+  margin:1.5%;
+}
+
+#divInput form input[type="text"]{
+  width: 90%;
+  font-size: 2em;
+  border: 3px solid #dbdbdb;
+  margin-top: 1.5%;
+}
+#divInput form input[type=submit]
+{
+    display:none;
+}
+
+.customSearch{
+  background-image: url("http://ecd.61f.myftpupload.com/wp-content/uploads/2017/08/search.jpg");
+  background-repeat: no-repeat;
+  padding-left: 20%;
+  height: 75px;
+  margin: 10px 0px 0px 0px;
+  background-color: #dbdbdb;
+
+}
+.customNewMaterials{
+  background-image: url("http://ecd.61f.myftpupload.com/wp-content/uploads/2017/08/new-materials-130x182.jpg");
+  background-repeat: no-repeat;
+  padding-left: 12%;
+  background-color: #dbdbdb;
+  border: 7px solid #e5e5e5;
+}
+
+
+@media (max-width: 680px) {
+  #divInput form input[type=submit]
+  {
+    display: inline;
+    width: 100%;
+  }
+  .customSearch{
+    background-image: none;
+    width: 100%;
+    padding: 0%;
+    background-color: none:
+  }
+  #divInput form input[type="text"]{
+  width: 100%;
+  font-size: 1em;
+  }
+  #pg-375-1{
+    display: none;
+  }
+  #pgc-375-3-1{
+    display: none;
+  }
+  .libraryaware_widget_b68ad8be631c4bde84883b7086eb8ad5{
+    display: none;
+  }
+
+}
