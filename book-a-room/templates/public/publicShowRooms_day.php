@@ -3,7 +3,7 @@
 function checkSubmit() {
 	var hourChecks = document.getElementsByName('hours[]');
 
-	var boxCount = 0;	
+	var boxCount = 0;
 
 	for (var t=0, checkLength = hourChecks.length; t<checkLength; t++) {
 		if( hourChecks[t].type == 'checkbox' && hourChecks[t].checked == true ) {
@@ -37,7 +37,7 @@ function checkHours(curChecked) {
 	if( hourChecks[curChecked].checked == false && curChecked < boxArr[0] ) {
 		hourChecks[curChecked].checked = false;
 	} else if( hourChecks[curChecked].checked == false ) {
-		for (var t=curChecked, checkLength = hourChecks.length; t<checkLength; t++) {	
+		for (var t=curChecked, checkLength = hourChecks.length; t<checkLength; t++) {
 			hourChecks[t].checked = false;
 		}
 	// is checked box higher? clear underneath (after first)
@@ -46,13 +46,13 @@ function checkHours(curChecked) {
 		for (var t=curChecked, checkLength = hourChecks.length; t < checkLength; t++) {
 			hourChecks[t].checked = chkstat;
 			chkstat = false;
-			
+
 		}
 	// are there multiple and this is the first? just uncheck it
 	} else if( boxArr.length > 1) {
 		for( var s=boxArr[0]+1, e=boxArr[boxArr.length-1]; s<e; s++ ) {
 			var curHour = document.getElementById( 'hours_'+s );
-			
+
 			if( curHour.value == false ) {
 				hourChecks[curChecked].checked = false;
 				alert( "Error!\nI'm sorry, but there is already a reservation in the time you've selected. Please make sure your reservation times don't overlap someone else's reservation." );
@@ -362,7 +362,7 @@ function checkHours(curChecked) {
 	</div>
 
 <?php
-$reserveBuffer = get_option( 'bookaroom_reserveBuffer' );				
+$reserveBuffer = get_option( 'bookaroom_reserveBuffer' );
 $allowedBuffer = get_option( 'bookaroom_reserveAllowed' );
 ?>
 
@@ -374,7 +374,7 @@ $allowedBuffer = get_option( 'bookaroom_reserveAllowed' );
 			</div>
 			<div class="options">
 				<p class="header"><?php _e( 'Please check the start and the end time that you would like to reserve.', 'book-a-room' ); ?></p>
-				<p><?php _e( 'Please include any set up and clean up time you need in your reservation. Any times marked Unavailable on the schedule are for staff only.', 'book-a-room' ); ?></p>
+				<p><?php _e( 'Please include any set up and clean up time you need in your reservation.', 'book-a-room' ); ?></p>
 				<?php
 				# If buffers, show the buffer message
 				if( $allowedBuffer ) {
@@ -389,7 +389,7 @@ $allowedBuffer = get_option( 'bookaroom_reserveAllowed' );
 				}
 				?>
 				<p id="topSubmit">
-					<input type="submit" name="submitHours" id="submitHours" value="Click here when you are finished" onclick="checkSubmit(); return false;"/>
+					<input type="submit" name="submitHours" id="submitHours" value="Click here to continue." onclick="checkSubmit(); return false;"/>
 					<br/>
 					<input type="reset" name="Reset" id="resetHours" value="Clear the form"/>
 				</p>
@@ -401,17 +401,17 @@ $allowedBuffer = get_option( 'bookaroom_reserveAllowed' );
 			$baseIncrement = get_option( 'bookaroom_baseIncrement' );
 			$cleanupIncrements = get_option( 'bookaroom_cleanupIncrement' );
 			$closeTime = strtotime( date( 'Y-m-d '.$branchList[$branchID]["branchClose_{$dayOfWeek}"], $timestamp ) );
-			$closings = self::getClosings( $roomID, $timestamp, $roomContList );			
+			$closings = self::getClosings( $roomID, $timestamp, $roomContList );
 			$openTime = strtotime( date( 'Y-m-d '.$branchList[$branchID]["branchOpen_{$dayOfWeek}"], $timestamp ) );
 			$reservations = self::getReservations( $roomID, $timestamp );
 			$setupIncrements = get_option( 'bookaroom_setupIncrement' );
 			$timeInfo = getdate( $timestamp );
 			$incrementList = array();
 			$increments = ( ( $closeTime - $openTime ) / 60 ) / $baseIncrement;
-			
-		
+
+
 		if( empty( $roomContList['branch'][$branchID] ) ) {
-		# No rooms 
+		# No rooms
 		?>
 		<div class="col2">
 			<div class="options">
@@ -462,17 +462,17 @@ $allowedBuffer = get_option( 'bookaroom_reserveAllowed' );
 						<td class="calStatus"><?php _e( 'Status', 'book-a-room' ); ?></td>
 					</tr>
 					<?php
-			
+
 			$count = 1;
-			
+
 			for( $i = 0; $i < $increments; $i++) {
-				
+
 				#if( $count++ > 50) wp_die( 'loop' );
 				# find increment offset  from start
 				$curStart = $openTime + (  $baseIncrement * 60 * $i);
 				$curEnd = $openTime + (  $baseIncrement * 60 * ($i+1) );
 				if( $curEnd > $closeTime ) {
-					$curEnd = $closeTime; 
+					$curEnd = $closeTime;
 				}
 				# last line?
 				if( $i + $cleanupIncrements >= $increments ) {
@@ -520,16 +520,16 @@ $allowedBuffer = get_option( 'bookaroom_reserveAllowed' );
 								$validEnd		= $validStart + ( get_option( 'bookaroom_reserveAllowed' ) * 24 * 60 * 60 );#reme();
 								$startTime = strtotime( $resVal['ti_startTime'] );
 								$endTime = strtotime( $resVal['ti_endTime'] );
-								
-								
+
+
 								if( ( $startTime <= $validStart || $endTime <= $validStart ) && empty( $res_id) && $admin == false  ||
 								 	( $startTime >= $validEnd || $endTime >= $validEnd ) && empty( $res_id) && $admin == false )  {
 										$incrementList[$i]['type'] = 'unavailable';
 								}
-								
+
 								if( empty( $incrementList[$i]['type'] ) ) {
 									$incrementList[$i]['type'] = 'regular';
-								
+
 								}
 							}
 						}
@@ -540,12 +540,12 @@ $allowedBuffer = get_option( 'bookaroom_reserveAllowed' );
 
 				$curStart = $openTime + (  $baseIncrement * 60 * $i);
 				$curEnd = $openTime + (  $baseIncrement * 60 * ($i+1) );
-				
+
 				if( $curEnd > $closeTime ) {
-					$curEnd = $closeTime; 
+					$curEnd = $closeTime;
 				}
-				
-						
+
+
 				if( $closings !== false ) {
 					#Closed
 					?>
@@ -560,7 +560,7 @@ $allowedBuffer = get_option( 'bookaroom_reserveAllowed' );
 				} else {
 					switch( $incrementList[$i]['type'] ) {
 						case 'setup':
-							# Setup 
+							# Setup
 							?>
 							<tr class="calHoursSetup" style="background: <?php echo get_option( 'bookaroom_setupColor' ); ?>; color: #setupFont#">
 								<td class="calCheckBox"><input id="hours_<?php echo $i; ?>" name="hours[]" type="hidden" value="" onchange="checkHours()"/>
@@ -568,7 +568,7 @@ $allowedBuffer = get_option( 'bookaroom_reserveAllowed' );
 								<td class="calTime"><?php echo date( 'g:i a', $curStart ) .' - '. date( 'g:i a', $curEnd ); ?></td>
 								<td class="calStatus">&nbsp;</td>
 							</tr>
-							<?php							
+							<?php
 							break;
 
 						case 'reserved':
@@ -580,7 +580,7 @@ $allowedBuffer = get_option( 'bookaroom_reserveAllowed' );
 								<td class="calTime"><?php echo date( 'g:i a', $curStart ) .' - '. date( 'g:i a', $curEnd ); ?></td>
 								<td class="calStatus"><?php echo htmlspecialchars_decode( $incrementList[$i]['desc'] ); ?></td>
 							</tr>
-							<?php							
+							<?php
 							break;
 
 
@@ -606,7 +606,7 @@ $allowedBuffer = get_option( 'bookaroom_reserveAllowed' );
 							</tr>
 							<?php
 							break;
-						
+
 						case 'regular':
 						default:
 							# Regular
@@ -646,9 +646,9 @@ $allowedBuffer = get_option( 'bookaroom_reserveAllowed' );
 			</div>
 		</div>
 		<?php
-		
+
 		}
-		
+
 		?>
 	</div>
 </form>
